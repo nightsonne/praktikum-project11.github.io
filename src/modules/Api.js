@@ -1,5 +1,4 @@
-/*REVIEW. Можно лучше. Лучше токен передавать в параметры класса, чтобы класс был от него независим и не дублировался код. */
-class Api {
+export default class Api {
   constructor(url) {
     this.url = url;
 }

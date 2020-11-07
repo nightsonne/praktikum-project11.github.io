@@ -1,4 +1,4 @@
-class Popup {
+export default class Popup {
 	constructor(popupName, addClassName) {
 		this.popupName = popupName;
     this.addClassName = addClassName;

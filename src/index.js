@@ -1,3 +1,12 @@
+import Api from './modules/Api.js';
+import Card from './modules/Card.js';
+import CardList from './modules/CardList.js';
+import FormValidator from './modules/FormValidator.js';
+import Popup from './modules/Popup.js';
+import UserInfo from './modules/UserInfo.js';
+import "./pages/index.css";
+
+
 (function(){
 
 const placeList = document.querySelector('.places-list');
@@ -16,8 +25,8 @@ const popupNewCard = document.querySelector('.popup_new-card');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupOpenImage = document.querySelector('.popup_open-image');
 
-//создадим экземпляр класса Api
-const api = new Api('https://nomoreparties.co/cohort12/cards');
+//создадим экземпляр класса Api с урлом в зависимости от переменной окружения
+const api = new Api(`${(NODE_ENV==='development') ? 'http://nomoreparties.co/cohort12/cards' : 'https://nomoreparties.co/cohort12/cards'}`);
 
 // создадим функцию-коллбек для передачи в класс CardList
 const newCard = (name, link) => {
@@ -32,7 +41,7 @@ const cardList = new CardList(placeList, api, newCard);
 cardList.render();
 
 //создадим еще один экземпляр класса Api
-const apiUserData = new Api('https://nomoreparties.co/cohort12/users/me');
+const apiUserData = new Api(`${(NODE_ENV==='development') ? 'http://nomoreparties.co/cohort12/users/me' : 'https://nomoreparties.co/cohort12/users/me'}`);
 
 // создадим экземпляр класса UserInfo
 const userInfo = new UserInfo(document.querySelector('.user-info__name'), document.querySelector('.user-info__job'),document.querySelector('.user-info__photo'));
@@ -40,8 +49,8 @@ const userInfo = new UserInfo(document.querySelector('.user-info__name'), docume
 // получим с сервера данные пользователя и выведем их в соответствующие DOM-элементы
 apiUserData.getUserData()
  .then((res) =>{
-    userInfo.updateUserInfoServer(res.name,res.about,res.avatar); //*******************************************************************
-      console.log(res);
+    userInfo.updateUserInfoServer(res.name,res.about,res.avatar); 
+      //console.log(res);
   })
   .catch(err => console.log(err));
 
@@ -119,36 +128,3 @@ formEdit.addEventListener('submit', (event) => {
 });
 
 })();
-
-
-/*
-REVIEW. Резюме.
-
-Очень хороший проект. Взаимодействие с сервером происходит, информация на сервере сохраняется и на странице меняется.
-
-Есть одна ошибка.
-
-Что надо исправить.
-
-1. Произвести закрытие формы профиля при сабмите нужно в методе then обработки ответа сервера (подробный комментарий в
-слушателе сабмита формы профиля). +++++++++++++++++++++++++++++
-
-
-Что надо лучше.
-
-1. Чтобы во всём проекте была одинаковая логика и методы классов выполняли свои единственные задачи (методы класса Api делали запрос к серверу,
-методы других классов только обрабатывали этот ответ) метод api.getInitialCards() нужно вызывать в index.js вне метода render класса CardList,
-аналогично тому, как Вы это делаете для других методов класса Api (подробный комментарий в файле класса CardList).
-
-____________________________________________________________________________________________________________________________________________________
-
-REVIEW2. Резюме2.
-
-Критическое замечание устранено.
-
-Проект принимается.
-
-Желаю дальнейшей интересной и успешной учёбы и удачи!
-
-
-*/
