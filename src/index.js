@@ -49,8 +49,8 @@ const userInfo = new UserInfo(document.querySelector('.user-info__name'), docume
 // получим с сервера данные пользователя и выведем их в соответствующие DOM-элементы
 apiUserData.getUserData()
  .then((res) =>{
-    userInfo.updateUserInfoServer(res.name,res.about,res.avatar); //*******************************************************************
-      console.log(res);
+    userInfo.updateUserInfoServer(res.name,res.about,res.avatar); 
+      //console.log(res);
   })
   .catch(err => console.log(err));
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <title>Mesto</title>
   <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>">
 </head>
+
 <body>
   <div class="root">
     <header class="header root__section">
@@ -30,11 +32,13 @@
         <img src="<%=require('./images/close.svg').default%>" alt="" class="popup__close popup__close_new-card">
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form" name="new">
-            <input type="text" id="new-card-name" required minlength="2" maxlength="30"  name="name" class="popup__input popup__input_type_name" placeholder="Название">
-            <span id="new-card-name-error" class="error"></span>
-            <input type="url" id="new-card-link" required name="link" class="popup__input popup__input_type_link-url" placeholder="Ссылка на картинку">
-            <span id="new-card-link-error" class="error"></span>
-            <button type class="button popup__button popup__button_new-card">+</button>
+          <input type="text" id="new-card-name" required minlength="2" maxlength="30" name="name"
+            class="popup__input popup__input_type_name" placeholder="Название">
+          <span id="new-card-name-error" class="error"></span>
+          <input type="url" id="new-card-link" required name="link" class="popup__input popup__input_type_link-url"
+            placeholder="Ссылка на картинку">
+          <span id="new-card-link-error" class="error"></span>
+          <button type class="button popup__button popup__button_new-card">+</button>
         </form>
       </div>
     </div>
@@ -43,11 +47,13 @@
         <img src="<%=require('./images/close.svg').default%>" alt="" class="popup__close popup__close_edit-profile">
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form" name="edit">
-            <input type="text" id="edit-profile-name" required minlength="2" maxlength="30" name="name" class="popup__input popup__input_type_name" placeholder="Имя">
-            <span id="edit-profile-name-error" class="error"></span>
-            <input type="text" id="edit-profile-about" required minlength="2" maxlength="30" name="about" class="popup__input popup__input_type_link-url" placeholder="О себе">
-            <span id="edit-profile-about-error" class="error"></span>
-            <button type="submit" class="button popup__button popup__button_edit-profile">Сохранить</button>
+          <input type="text" id="edit-profile-name" required minlength="2" maxlength="30" name="name"
+            class="popup__input popup__input_type_name" placeholder="Имя">
+          <span id="edit-profile-name-error" class="error"></span>
+          <input type="text" id="edit-profile-about" required minlength="2" maxlength="30" name="about"
+            class="popup__input popup__input_type_link-url" placeholder="О себе">
+          <span id="edit-profile-about-error" class="error"></span>
+          <button type="submit" class="button popup__button popup__button_edit-profile">Сохранить</button>
         </form>
       </div>
     </div>
@@ -60,4 +66,5 @@
   </div>
   <script type="module" src="<%= htmlWebpackPlugin.files.js %>"></script>
 </body>
+
 </html>
